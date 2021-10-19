@@ -16,11 +16,11 @@ app.get('/sum_web', (req, res) => {
 
 app.post('/sum_web', (req, res) => {
     const { first_value, second_value } = req.body;
-    // let value1 = parseInt(first_value);
-    // let value2 = parseInt(second_value);
-    console.log(value1, value2);
+    let value1 = parseFloat(first_value);
+    let value2 = parseFloat(second_value);
+    console.table({ value1, value2 });
     if (typeof value1 === "number" && typeof value2 === "number") {
-        res.status(200).json({ result: value1 + value2 });
+        res.status(200).json({ result: `${value1 + value2}` });
     } else {
         res.status(200).json({ result: "undefined value" });
     }
@@ -29,5 +29,7 @@ app.post('/sum_web', (req, res) => {
 app.listen(app.get('PORT'), (err) => {
     if (!err) {
         console.log(`Server started on port ${app.get('PORT')}`);
+    } else {
+        console.log("we have an error");
     }
 });
